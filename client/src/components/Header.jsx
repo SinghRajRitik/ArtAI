@@ -3,6 +3,11 @@ import { assets } from '../assets/assets';
 import { delay, motion } from "motion/react";
 
 const Header = () => {
+
+
+
+
+
   return (<>
     <motion.div className='flex flex-col justify-center items-center  text-center my-20'
       initial={{ opacity: 2, y: 100 }}
@@ -31,7 +36,7 @@ const Header = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >Unlease boundless Creativity with AI- Turn your thoughts into stunning visulal arts instantly. just type,and watch the magic unfold.</motion.p>
-      <motion.button className='sm:text-lg text-white bg-pink-700 w-auto mt-8 px-12 py-2.5 flex item-center gap-2 rounded-full'
+      <motion.button onClick={onClickHandler} className='sm:text-lg text-white bg-pink-700 w-auto mt-8 px-12 py-2.5 flex item-center gap-2 rounded-full'
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         initial={{ opacity: 0 }}
@@ -42,11 +47,19 @@ const Header = () => {
       </motion.button>
     </motion.div >
     <motion.div className='flex flex-wrap justify-center mt-16 gap-3'>
-      {Array(6).fill('').map((item,index)=>(
-       <img src={index % 2 ==0? assets.sample_img_2:assets.sample_img_1} alt='' width = {70}/> 
+      {Array(6).fill('').map((item, index) => (
+        <motion.img
+          whileHover={{ scale: 1.05, duration: 0.1 }} className='rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10' src={index % 2 == 0 ? assets.sample_img_2 : assets.sample_img_1} alt='' width={70} />
       ))}
     </motion.div>
-    </>
+    <motion.p
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.2, duration: 0.8 }}
+      className='mt-2 text-neutral-600'>
+      Generate Image from ArtAI
+    </motion.p>
+  </>
   )
 }
 

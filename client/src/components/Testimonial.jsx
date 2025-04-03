@@ -1,24 +1,38 @@
 import React from 'react'
-import { testimonialsData } from '../assets/assets'
+import { assets, testimonialsData } from '../assets/assets'
+import { delay,motion } from 'motion/react'
 
 const Testimonial = () => {
   return (
-    <div>
-        <h1>
+    <motion.div 
+    initial={{opacity:0.2,y:100}}
+    transition={{duration:1}}
+    whileInView={{opacity:1,y:0}}
+    viewport={{once:true}}
+    className='flex flex-col item-center justify-center my-20 p-12' >
+        <h1 className='text-3xl sm:text-4xl font-semibold mb-2'>
           User Review
         </h1>
-        <p>What our customers say</p>
-        <div>
+        <p className='text-gray-500 mb-12'>What our customers say</p>
+        <div className='flex flex-wrap gap-6'>
             {testimonialsData.map((testimonial,index)=>(
                 <div key={index}>
                     <div>
-                        <img src={testimonial.image} alt="" />
+                        <img src={testimonial.image} alt="" className='rounded-full w-14' />
+                        <h2 className='text-xl font-semibold mt-3'>{testimonial.name}</h2>
+                        <p  className='text-gray-500 mb-4'>{testimonial.role}</p>
+                        <div className='flex mb-4'>
+                          {Array(testimonial.stars).fill().map((item,index)=>(
+                            <img key = {index}src={assets.rating_star} alt="" />
+                          ))}
+                        </div>
+                        <p className='text-center text-sm text-gray-600'>{testimonial.text}</p>
                     </div>
 
                 </div>
             ))}
         </div>
-    </div>
+    </motion.div>
   )
 }
 

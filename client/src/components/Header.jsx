@@ -1,10 +1,15 @@
 // import { useContext } from 'react';
 import React from 'react'
 import { assets } from '../assets/assets';
-import { delay, motion } from "motion/react";
+import { motion } from "motion/react";
 import {useNavigate} from 'react-router-dom'
+import { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 const Header = () => {
+
+  const { user, setShowLogin } = useContext(AppContext)
+
   const navigate = useNavigate()
 
  const onClickHandler=()=>{
@@ -20,7 +25,7 @@ const Header = () => {
     <motion.div className='flex flex-col justify-center items-center  text-center my-20'
       initial={{ opacity: 2, y: 100 }}
       transition={{ duration: 1 }}
-      whileInView={{ pacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
     >
       <motion.div className='text-stone-500 inline-flex text-center gap-2 bg-white px-6 py-1 rounded-full border  hover:scale-195 border-neutral-500 transition-all duration-700'
@@ -56,9 +61,15 @@ const Header = () => {
     </motion.div >
     <motion.div className='flex flex-wrap justify-center mt-16 gap-3'>
       {Array(6).fill('').map((item, index) => (
-        <motion.img
-          whileHover={{ scale: 1.05, duration: 0.1 }} className='rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10' src={index % 2 == 0 ? assets.sample_img_2 : assets.sample_img_1} alt='' width={70} />
-      ))}
+  <motion.img
+    key={index}   
+    whileHover={{ scale: 1.05, duration: 0.1 }}
+    className='rounded hover:scale-105 transition-all duration-300 cursor-pointer max-sm:w-10'
+    src={index % 2 == 0 ? assets.sample_img_2 : assets.sample_img_1}
+    alt=''
+    width={70}
+  />
+))}
     </motion.div>
     <motion.p
     initial={{opacity:0}}

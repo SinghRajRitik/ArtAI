@@ -76,7 +76,7 @@ export const testimonialsData = [
     {
         image:people_2,
         name:'Arjun Sharma',
-        role:' Mahinda',
+        role:' Mahindra',
         stars:5,
         text:`Impressive work! Fast loading times, intuitive design, and flawless backend integration. Highly recommend.`
     },

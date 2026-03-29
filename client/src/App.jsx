@@ -23,7 +23,6 @@ function App() {
       <ToastContainer/>
       <Navbar/>
       {showLogin && <Login/>}
-      <Login/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/Result" element={<Result/>} />

@@ -2,7 +2,7 @@ import React from "react"
 import {BrowserRouter,Routes , Route} from "react-router-dom"
 import Home from "./pages/Home"
 import Result from "./pages/Result"
-import BuyCredit from "./pages/BuyCredit"
+import Buycredit from "./pages/BuyCredit"
 import Footer from "./components/Footer"
 import Login from "./components/Login"
 import { useContext } from "react"
@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/Result" element={<Result/>} />
-        <Route path="/Buy" element={<BuyCredit/>} />
+        <Route path="/Buy" element={<Buycredit/>} />
 
       </Routes>
        <Footer />

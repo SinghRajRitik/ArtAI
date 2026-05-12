@@ -11,12 +11,14 @@ const Result = () => {
   const [input, setInput] = useState('')
 
   const {generateImage} = useContext(AppContext)
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     setLoading(true)
 
     if (input) {
       const image = await generateImage(input)
+      
       if (image) {
         setIsImageLoaded(true)
         setImage(image)

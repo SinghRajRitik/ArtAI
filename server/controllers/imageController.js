@@ -5,11 +5,16 @@ import axios from 'axios'
 
 const generateImage = async (req, res) => {
     try {
-        const { userId, prompt } = req.body;
+         const { prompt } = req.body;
+         const userId = req.userId;
 
         const user = await userModel.findById(userId)
 
-        if (!user || !prompt) {
+        if (!user) {
+            return res.json({ success: false, message: 'User not found' })
+        }
+
+        if (!prompt) {
             return res.json({ success: false, message: 'missing Details' })
         }
         if (user.creditBalance == 0 || user.creditBalance < 0) {
